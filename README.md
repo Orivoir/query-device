@@ -4,6 +4,17 @@
 
 @TODO add CDN link from git page deploy here
 
+## CDN usage
+
+### Script tag
+
+```html
+<script src="https://orivoir.github.io/query-device/dist/query-device.js"></script>
+```
+
+## [Learn more with CDN usage](https://github.com/Orivoir/query-device/blob/gh-pages/DOC.md)
+
+
 - [installation](#installation)
 
 - [import](#import)
@@ -111,7 +122,7 @@ You can access to devices list with static method deviceList
 
 QueryDevice.deviceList
 
-```json
+```js
 [
     {
         "name": "iPhone XR", "size": "414x896"
