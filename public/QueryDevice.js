@@ -91,6 +91,19 @@ class QueryDevice {
     }
     static device2mediaBrut( device ) {
 
+        if( typeof device === "string" ) {
+
+            device = { size: device };
+        }
+
+        if(
+            typeof device !== "object" ||
+            typeof device.size !== "string"
+        ) {
+
+            throw new RangeError('`device size` should be a `object` or `string` value');
+        }
+
         const [w,h] = device.size.split('x').map( side => parseInt( side ) );
 
         return `min-width: ${w}px && min-height: ${h}px`;
@@ -98,20 +111,28 @@ class QueryDevice {
 
     static findDeviceByName( deviceName ) {
 
+        if( typeof deviceName !== "string" ) {
+
+            throw new RangeError('`deviceName` should be a `string` value');
+        }
+
         deviceName = deviceName.toLocaleLowerCase();
 
         return QueryDevice.deviceList.find( d => (
             d.name.toLocaleLowerCase() === deviceName
-        ) ) ;
+        ) ) || null ;
     }
 
     constructor() {
 
         this.mediaEvents = [];
 
-        if( !( window.matchMedia instanceof Function ) ) {
+        if( process.env.NODE_ENV !== "test" ) {
 
-            throw "Browser do not support API window.matchMedia";
+            if( !( window.matchMedia instanceof Function ) ) {
+
+                throw "Browser do not support API window.matchMedia";
+            }
         }
 
         this.onResizeWindow = this.onResizeWindow.bind( this );
@@ -239,15 +260,19 @@ class QueryDevice {
 
 } ;
 
-window.queryDevice = function() {
+if( process.env.NODE_ENV !== "test" ) {
 
-    return new QueryDevice;
-} ;
+    window.queryDevice = function() {
+
+        return new QueryDevice;
+    } ;
+
+    // public scope static elements
+
+    window.queryDevice.deviceList = QueryDevice.deviceList;
+    window.queryDevice.findDeviceByName = QueryDevice.findDeviceByName;
 
 
-// public scope static elements
-
-window.queryDevice.deviceList = QueryDevice.deviceList;
-window.queryDevice.findDeviceByName = QueryDevice.findDeviceByName;
+}
 
 module.exports = QueryDevice;

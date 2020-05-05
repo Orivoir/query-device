@@ -4,6 +4,8 @@
   "description": "Handler hight-level for mediaMatch API",
   "main": "./dist/query-device.js",
   "scripts": {
+    "test": "mocha ./test",
+    "coverage": "nyc npm test",
     "build": "node ./build/dist.js",
     "build-polyfill": "node ./build/babel-polyfill.js"
   },
@@ -34,7 +36,10 @@
     "@babel/plugin-transform-classes": "^7.9.5",
     "@babel/plugin-transform-runtime": "^7.9.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "browserify": "^16.5.1"
+    "browserify": "^16.5.1",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",

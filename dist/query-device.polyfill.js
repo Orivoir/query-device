@@ -64,6 +64,16 @@ let QueryDevice = /*#__PURE__*/function () {
   }, {
     key: "device2mediaBrut",
     value: function device2mediaBrut(device) {
+      if (typeof device === "string") {
+        device = {
+          size: device
+        };
+      }
+
+      if (typeof device !== "object" || typeof device.size !== "string") {
+        throw new RangeError('`device size` should be a `object` or `string` value');
+      }
+
       const [w, h] = device.size.split('x').map(function (side) {
         return parseInt(side);
       });
@@ -72,10 +82,14 @@ let QueryDevice = /*#__PURE__*/function () {
   }, {
     key: "findDeviceByName",
     value: function findDeviceByName(deviceName) {
+      if (typeof deviceName !== "string") {
+        throw new RangeError('`deviceName` should be a `string` value');
+      }
+
       deviceName = deviceName.toLocaleLowerCase();
       return QueryDevice.deviceList.find(function (d) {
         return d.name.toLocaleLowerCase() === deviceName;
-      });
+      }) || null;
     }
   }, {
     key: "SECURITY_LOOP_PARSE_MEDIA",
@@ -109,8 +123,10 @@ let QueryDevice = /*#__PURE__*/function () {
 
     this.mediaEvents = [];
 
-    if (!(window.matchMedia instanceof Function)) {
-      throw "Browser do not support API window.matchMedia";
+    if (process.env.NODE_ENV !== "test") {
+      if (!(window.matchMedia instanceof Function)) {
+        throw "Browser do not support API window.matchMedia";
+      }
     }
 
     this.onResizeWindow = this.onResizeWindow.bind(this);
@@ -212,6 +228,11 @@ let QueryDevice = /*#__PURE__*/function () {
     get: function () {
       return this._mediaMatchBrut;
     }
+  }, {
+    key: "size",
+    get: function () {
+      return this.mediaEvents.length;
+    }
   }]);
 
   return QueryDevice;
@@ -219,11 +240,14 @@ let QueryDevice = /*#__PURE__*/function () {
 
 ;
 
-window.queryDevice = function () {
-  return new QueryDevice();
-}; // public scope static elements
+if (process.env.NODE_ENV !== "test") {
+  window.queryDevice = function () {
+    return new QueryDevice();
+  }; // public scope static elements
 
 
-window.queryDevice.deviceList = QueryDevice.deviceList;
-window.queryDevice.findDeviceByName = QueryDevice.findDeviceByName;
+  window.queryDevice.deviceList = QueryDevice.deviceList;
+  window.queryDevice.findDeviceByName = QueryDevice.findDeviceByName;
+}
+
 module.exports = QueryDevice;
