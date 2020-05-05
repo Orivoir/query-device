@@ -70,7 +70,7 @@ You can add **viewport listeners** with multiple choices
 
 ```javascript
 
-queryDevice.add( "min-width: 416px", function( isMatches ) {
+queryDevice.add( "min-width: 416px AND min-height: 640px", function( isMatches ) {
 
     // the viewport have change
 
@@ -171,7 +171,7 @@ queryDevice.add( iPhoneXrDevice, function( isMatches ) {
 
     } else {
 
-        console.log('viewport have not iPhone XR size');
+        console.log('viewport have iPhone XR size');
     }
 
 } );
