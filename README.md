@@ -1,17 +1,18 @@
 # [query-device]( https://npmjs.com/package/query-device )
 
+![Node.js CI](https://github.com/Orivoir/query-device/workflows/Node.js%20CI/badge.svg?branch=master)
+
 > You have need dynamic responsive for your app, css cant full coverage, now you can use a handler of viewport device, easy usage.
 
 ## CDN usage
+
+### [Learn more with CDN usage](https://github.com/Orivoir/query-device/blob/gh-pages/DOC.md)
 
 ### Script tag
 
 ```html
 <script src="https://orivoir.github.io/query-device/dist/query-device.js"></script>
 ```
-
-## [Learn more with CDN usage](https://github.com/Orivoir/query-device/blob/gh-pages/DOC.md)
-
 
 - [installation](#installation)
 
