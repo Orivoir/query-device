@@ -7,7 +7,7 @@
 <script src="https://orivoir.github.io/query-device/dist/query-device.js"></script>
 ```
 
-## [Usage query device as CDN](https://orivoir.github.io/query-device/DOC.md)
+## [Usage query device as CDN](https://github.com/Orivoir/query-device/blob/gh-pages/DOC.md)
 
 
 ## [use as package from NPM](https://www.npmjs.com/package/query-device)
