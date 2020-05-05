@@ -2,8 +2,6 @@
 
 > You have need dynamic responsive for your app, css cant full coverage, now you can use a handler of viewport device, easy usage.
 
-@TODO add CDN link from git page deploy here
-
 ## CDN usage
 
 ### Script tag
