@@ -1,4 +1,4 @@
-# Welcome at doc for use [query-device as CDN](https://orivoir.github.io/query-device/dist/query-device.js)
+# Welcome at [query-device as CDN](https://orivoir.github.io/query-device/dist/query-device.js)
 
 - [installation](#installation)
 
