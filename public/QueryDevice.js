@@ -19,7 +19,7 @@ class QueryDevice {
 
         return false;
     }
-    static parseMediaMatchBrut( mediaMatchBrut ) {
+    static parseMediaBrut( mediaBrut ) {
 
         const mediasList = [];
 
@@ -30,13 +30,13 @@ class QueryDevice {
 
         do {
 
-            parsed = QueryDevice.parseOneMedia( mediaMatchBrut ) ;
+            parsed = QueryDevice.parseOneMedia( mediaBrut ) ;
 
             mediasList.push( parsed );
 
-            mediaMatchBrut = mediaMatchBrut.replace( parsed.matchMedia, "" );
-            mediaMatchBrut = mediaMatchBrut.replace( parsed.realLogicOperator, "" );
-            mediaMatchBrut = mediaMatchBrut.trim();
+            mediaBrut = mediaBrut.replace( parsed.matchMedia, "" );
+            mediaBrut = mediaBrut.replace( parsed.realLogicOperator, "" );
+            mediaBrut = mediaBrut.trim();
 
             if( ++securityLoop >= QueryDevice.SECURITY_LOOP_PARSE_MEDIA ) {
                 parsed = null;
@@ -174,41 +174,41 @@ class QueryDevice {
         return false;
     }
 
-    add( mediaMatchBrut, callback, idQueryDevice = null ) {
+    add( mediaBrut, callback, idQueryDevice = null ) {
 
         if( !(callback instanceof Function) ) {
             throw "arg2:callback should be a function";
         }
 
-        const isStringMediaMatch = typeof mediaMatchBrut === "string";
+        const isStringMediaMatch = typeof mediaBrut === "string";
 
         if( isStringMediaMatch ) {
 
-            mediaMatchBrut = mediaMatchBrut.trim();
+            mediaBrut = mediaBrut.trim();
         }
 
         // if give a format: "aaaxbbb" eg: "414x640"
         if(
             isStringMediaMatch &&
-            /^[\d]{3,4}\x[\d]{3,4}$/.test( mediaMatchBrut )
+            /^[\d]{3,4}\x[\d]{3,4}$/.test( mediaBrut )
 
         ) {
-            mediaMatchBrut = QueryDevice.device2mediaBrut( { size: mediaMatchBrut } );
+            mediaBrut = QueryDevice.device2mediaBrut( { size: mediaBrut } );
         }
 
         // if have give a device object as media to matches
-        if( typeof mediaMatchBrut === "object" && typeof mediaMatchBrut.name === "string" ) {
+        if( typeof mediaBrut === "object" && typeof mediaBrut.name === "string" ) {
 
-            mediaMatchBrut = mediaMatchBrut.name;
+            mediaBrut = mediaBrut.name;
         }
 
-        const device = QueryDevice.findDeviceByName( mediaMatchBrut );
+        const device = QueryDevice.findDeviceByName( mediaBrut );
 
         if( device ) {
             return this.addDevice( device.name, callback, idQueryDevice );
         }
 
-        this.mediaParsed = QueryDevice.parseMediaMatchBrut( mediaMatchBrut );
+        this.mediaParsed = QueryDevice.parseMediaBrut( mediaBrut );
 
         this.mediaEval =  this.mediaParsed.map( mediaParsedItem => (
             `window.matchMedia("(${mediaParsedItem.matchMedia})").matches ${mediaParsedItem.logicOperator || ""}`
@@ -239,18 +239,18 @@ class QueryDevice {
         return sizeBefore - this.mediaEvents.length;
     }
 
-    set mediaMatchBrut( mediaMatchBrut ) {
+    set mediaBrut( mediaBrut ) {
 
-        this._mediaMatchBrut = ( typeof mediaMatchBrut === "string" ) ? mediaMatchBrut.trim(): null;
+        this._mediaBrut = ( typeof mediaBrut === "string" ) ? mediaBrut.trim(): null;
 
-        if( !this._mediaMatchBrut ) {
+        if( !this._mediaBrut ) {
 
-            throw new SyntaxError("mediaMatch invalid format");
+            throw new SyntaxError("media query invalid format");
         }
     }
-    get mediaMatchBrut() {
+    get mediaBrut() {
 
-        return this._mediaMatchBrut;
+        return this._mediaBrut;
     }
 
     get size() {

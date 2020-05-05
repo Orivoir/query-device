@@ -24,12 +24,27 @@
         "name": "iPhone 7" ,"size":"375x667"
     },
     {
-        "name": "iPhone 6 Plus/6S Plus", "size":"414x736"
+        "name": "iPhone 6 Plus", "size":"414x736"
     },
     {
-        "name": "iPhone 6/6S", "size":"375x667"
+        "name": "iPhone 6", "size":"375x667"
+    },
+    {
+        "name": "iPhone 6S", "size":"375x667"
     },
     {
         "name": "iPhone 5", "size": "320x568"
+    },
+    {
+        "name": "Galaxy Note 3", "size": "360x640"
+    },
+    {
+        "name": "Galaxy S5", "size": "360x640"
+    },
+    {
+        "name": "iPhone 5", "size": "320x568"
+    },
+    {
+        "name": "iPhone 5SE", "size": "320x568"
     }
 ]

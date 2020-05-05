@@ -8,19 +8,19 @@ let QueryDevice = /*#__PURE__*/function () {
   "use strict";
 
   _createClass(QueryDevice, null, [{
-    key: "parseMediaMatchBrut",
-    value: function parseMediaMatchBrut(mediaMatchBrut) {
+    key: "parseMediaBrut",
+    value: function parseMediaBrut(mediaBrut) {
       const mediasList = [];
       let parsed = null; // for not crash browser if infinity loop as: "never found last constraints media device"
 
       let securityLoop = 0;
 
       do {
-        parsed = QueryDevice.parseOneMedia(mediaMatchBrut);
+        parsed = QueryDevice.parseOneMedia(mediaBrut);
         mediasList.push(parsed);
-        mediaMatchBrut = mediaMatchBrut.replace(parsed.matchMedia, "");
-        mediaMatchBrut = mediaMatchBrut.replace(parsed.realLogicOperator, "");
-        mediaMatchBrut = mediaMatchBrut.trim();
+        mediaBrut = mediaBrut.replace(parsed.matchMedia, "");
+        mediaBrut = mediaBrut.replace(parsed.realLogicOperator, "");
+        mediaBrut = mediaBrut.trim();
 
         if (++securityLoop >= QueryDevice.SECURITY_LOOP_PARSE_MEDIA) {
           parsed = null;
@@ -166,36 +166,36 @@ let QueryDevice = /*#__PURE__*/function () {
     }
   }, {
     key: "add",
-    value: function add(mediaMatchBrut, callback, idQueryDevice = null) {
+    value: function add(mediaBrut, callback, idQueryDevice = null) {
       if (!(callback instanceof Function)) {
         throw "arg2:callback should be a function";
       }
 
-      const isStringMediaMatch = typeof mediaMatchBrut === "string";
+      const isStringMediaMatch = typeof mediaBrut === "string";
 
       if (isStringMediaMatch) {
-        mediaMatchBrut = mediaMatchBrut.trim();
+        mediaBrut = mediaBrut.trim();
       } // if give a format: "aaaxbbb" eg: "414x640"
 
 
-      if (isStringMediaMatch && /^[\d]{3,4}\x[\d]{3,4}$/.test(mediaMatchBrut)) {
-        mediaMatchBrut = QueryDevice.device2mediaBrut({
-          size: mediaMatchBrut
+      if (isStringMediaMatch && /^[\d]{3,4}\x[\d]{3,4}$/.test(mediaBrut)) {
+        mediaBrut = QueryDevice.device2mediaBrut({
+          size: mediaBrut
         });
       } // if have give a device object as media to matches
 
 
-      if (typeof mediaMatchBrut === "object" && typeof mediaMatchBrut.name === "string") {
-        mediaMatchBrut = mediaMatchBrut.name;
+      if (typeof mediaBrut === "object" && typeof mediaBrut.name === "string") {
+        mediaBrut = mediaBrut.name;
       }
 
-      const device = QueryDevice.findDeviceByName(mediaMatchBrut);
+      const device = QueryDevice.findDeviceByName(mediaBrut);
 
       if (device) {
         return this.addDevice(device.name, callback, idQueryDevice);
       }
 
-      this.mediaParsed = QueryDevice.parseMediaMatchBrut(mediaMatchBrut);
+      this.mediaParsed = QueryDevice.parseMediaBrut(mediaBrut);
       this.mediaEval = this.mediaParsed.map(function (mediaParsedItem) {
         return `window.matchMedia("(${mediaParsedItem.matchMedia})").matches ${mediaParsedItem.logicOperator || ""}`;
       }).join(" ").trim();
@@ -219,16 +219,16 @@ let QueryDevice = /*#__PURE__*/function () {
       return sizeBefore - this.mediaEvents.length;
     }
   }, {
-    key: "mediaMatchBrut",
-    set: function (mediaMatchBrut) {
-      this._mediaMatchBrut = typeof mediaMatchBrut === "string" ? mediaMatchBrut.trim() : null;
+    key: "mediaBrut",
+    set: function (mediaBrut) {
+      this._mediaBrut = typeof mediaBrut === "string" ? mediaBrut.trim() : null;
 
-      if (!this._mediaMatchBrut) {
-        throw new SyntaxError("mediaMatch invalid format");
+      if (!this._mediaBrut) {
+        throw new SyntaxError("media query invalid format");
       }
     },
     get: function () {
-      return this._mediaMatchBrut;
+      return this._mediaBrut;
     }
   }, {
     key: "size",
@@ -493,13 +493,28 @@ module.exports=[
         "name": "iPhone 7" ,"size":"375x667"
     },
     {
-        "name": "iPhone 6 Plus/6S Plus", "size":"414x736"
+        "name": "iPhone 6 Plus", "size":"414x736"
     },
     {
-        "name": "iPhone 6/6S", "size":"375x667"
+        "name": "iPhone 6", "size":"375x667"
+    },
+    {
+        "name": "iPhone 6S", "size":"375x667"
     },
     {
         "name": "iPhone 5", "size": "320x568"
+    },
+    {
+        "name": "Galaxy Note 3", "size": "360x640"
+    },
+    {
+        "name": "Galaxy S5", "size": "360x640"
+    },
+    {
+        "name": "iPhone 5", "size": "320x568"
+    },
+    {
+        "name": "iPhone 5SE", "size": "320x568"
     }
 ]
 },{}]},{},[1]);
