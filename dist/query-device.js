@@ -227,6 +227,7 @@ window.queryDevice = function () {
 
 window.queryDevice.deviceList = QueryDevice.deviceList;
 window.queryDevice.findDeviceByName = QueryDevice.findDeviceByName;
+module.exports = QueryDevice;
 },{"./../stockage/device-list.json":4,"@babel/runtime/helpers/classCallCheck":2,"@babel/runtime/helpers/createClass":3}],2:[function(require,module,exports){
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {

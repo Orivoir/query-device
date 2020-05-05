@@ -205,7 +205,6 @@ class QueryDevice {
         this.poolEvent();
     }
 
-
     remove( idQueryDevice ) {
 
         const sizeBefore = this.mediaEvents.length;
@@ -233,6 +232,11 @@ class QueryDevice {
         return this._mediaMatchBrut;
     }
 
+    get size() {
+
+        return this.mediaEvents.length;
+    }
+
 } ;
 
 window.queryDevice = function() {
@@ -245,3 +249,5 @@ window.queryDevice = function() {
 
 window.queryDevice.deviceList = QueryDevice.deviceList;
 window.queryDevice.findDeviceByName = QueryDevice.findDeviceByName;
+
+module.exports = QueryDevice;

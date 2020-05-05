@@ -226,3 +226,4 @@ window.queryDevice = function () {
 
 window.queryDevice.deviceList = QueryDevice.deviceList;
 window.queryDevice.findDeviceByName = QueryDevice.findDeviceByName;
+module.exports = QueryDevice;
