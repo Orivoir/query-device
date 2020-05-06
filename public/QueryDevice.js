@@ -108,7 +108,6 @@ class QueryDevice {
 
         return `min-width: ${w}px && min-height: ${h}px`;
     }
-
     static findDeviceByName( deviceName ) {
 
         if( typeof deviceName !== "string" ) {
