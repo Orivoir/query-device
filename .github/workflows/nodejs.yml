@@ -28,4 +28,5 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run coverage
+    - run: npm run report
     - run: bash <(curl -s https://codecov.io/bash)
