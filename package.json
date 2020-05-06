@@ -6,9 +6,10 @@
   "scripts": {
     "test": "mocha ./test",
     "coverage": "nyc npm test",
-     "report": "nyc --reporter=lcov npm run coverage",
+    "report": "nyc --reporter=lcov npm run coverage",
     "build": "node ./build/dist.js",
-    "build-polyfill": "node ./build/babel-polyfill.js"
+    "build-polyfill": "node ./build/babel-polyfill.js",
+    "count-devices": "node ./stockage/count.js"
   },
   "_details": "the: `__file` key contains path files for build dist file: ./build/dist.js",
   "__file": {

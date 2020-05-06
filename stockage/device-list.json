@@ -1,50 +1,169 @@
 [
     {
         "name": "iPhone XR", "size": "414x896"
-    },
-    {
+    },{
         "name": "iPhone XS", "size":"375x812"
-    },
-    {
+    },{
         "name": "iPhone XS Max", "size":"414x896"
-    },
-    {
+    },{
         "name": "iPhone X", "size":"375x812"
-    },
-    {
+    },{
         "name": "iPhone 8 Plus", "size":"414x736"
-    },
-    {
+    },{
         "name":"iPhone 8", "size":"375x667"
-    },
-    {
+    },{
         "name": "iPhone 7 Plus", "size": "414x736"
-    },
-    {
+    },{
         "name": "iPhone 7" ,"size":"375x667"
-    },
-    {
+    },{
         "name": "iPhone 6 Plus", "size":"414x736"
-    },
-    {
+    },{
         "name": "iPhone 6", "size":"375x667"
-    },
-    {
+    },{
         "name": "iPhone 6S", "size":"375x667"
-    },
-    {
+    },{
         "name": "iPhone 5", "size": "320x568"
-    },
-    {
-        "name": "Galaxy Note 3", "size": "360x640"
-    },
-    {
-        "name": "Galaxy S5", "size": "360x640"
-    },
-    {
-        "name": "iPhone 5", "size": "320x568"
-    },
-    {
+    },{
+        "name": "Samsung Galaxy Note 3", "size": "360x640"
+    },{
         "name": "iPhone 5SE", "size": "320x568"
+    },{
+        "name": "Android One", "size": "320x569"
+    },{
+        "name": "Asus Zen Watch", "size": "213x213"
+    },{
+        "name": "Dell Venue 8", "size": "800x1280"
+    },{
+        "name": "HTC One M8", "size": "360x640"
+    },{
+        "name": "HTC One M9", "size": "360x640"
+    },{
+        "name": "LG G Watch", "size": "187x187"
+    },{
+        "name": "LG G Watch R", "size": "213x213"
+    },{
+        "name": "LG G2", "size": "360x640"
+    },{
+        "name": "LG G3", "size": "480x853"
+    },{
+        "name": "Moto 360", "size": "241x218"
+    },{
+        "name": "Moto 360 v2 42mm", "size": "241x244"
+    },{
+        "name": "Moto 360 v2 46mm", "size": "241x248"
+    },{
+        "name": "Moto G", "size": "360x640"
+    },{
+        "name": "Moto X", "size": "360x640"
+    },{
+        "name": "Moto X (2nd Gen)", "size": "360x640"
+    },{
+        "name": "Nexus 10", "size": "1280x800"
+    },{
+        "name": "Nexus 4", "size": "384x640"
+    },{
+        "name": "Nexus 5", "size": "360x640"
+    },{
+        "name": "Nexus 6", "size": "411x731"
+    },{
+        "name": "Nexus 5X", "size": "411x731"
+    },{
+        "name": "Nexus 6P", "size": "411x731"
+    },{
+        "name": "Google Pixel", "size": "411x731"
+    },{
+        "name": "Google Pixel XL", "size": "411x731"
+    },{
+        "name": "Nexus 7 ('12)", "size": "600x960"
+    },{
+        "name": "Nexus 7 ('13)", "size": "600x960"
+    },{
+        "name": "Nexus 9", "size": "1024x768"
+    },{
+        "name": "Samsung Galaxy Note 4", "size": "480x853"
+    },{
+        "name": "Samsung Galaxy S5", "size": "360x640"
+    },{
+        "name": "Samsung Galaxy S6", "size": "360x640"
+    },{
+        "name": "Samsung Galaxy S7", "size": "360x640"
+    },{
+        "name": "Samsung Galaxy S7 Edge", "size": "360x640"
+    },{
+        "name": "Samsung Galaxy S8", "size": "360x740"
+    },{
+        "name": "Samsung Galaxy S8+", "size": "360x740"
+    },{
+        "name": "Samsung Galaxy Tab 10", "size": "800x1280"
+    },{
+        "name": "Samsung Gear Live", "size": "213x213"
+    },{
+        "name": "Sony Smartwatch 3", "size": "213x213"
+    },{
+        "name": "Sony Xperia Z Ultra", "size": "540x960"
+    },{
+        "name": "Sony Xperia Z1 Compact", "size": "360x640"
+    },{
+        "name": "Sony Xperia Z2/Z3", "size": "360x640"
+    },{
+        "name": "Sony Xperia Z3 Compact", "size": "360x640"
+    },{
+        "name": "Sony Xperia C4", "size": "540x960"
+    },{
+        "name": "Sony Xperia Z4 Tablet", "size": "1280x800"
+    },{
+        "name": "Sony Xperia Z3 Tablet", "size": "960x600"
+    },{
+        "name": "Chromebook 11", "size": "1366x768"
+    },{
+        "name": "Chromebook Pixel", "size": "1280x850"
+    },{
+        "name": "Chromebox 30", "size": "2560x1600"
+    },{
+        "name": "Apple Watch 38mm", "size": "136x170"
+    },{
+        "name": "Apple Watch 42mm", "size": "156x195"
+    },{
+        "name": "iPad", "size": "768x1024"
+    },{
+        "name": "iPad Mini", "size": "768x1024"
+    },{
+        "name": "iPad Mini Retina", "size": "768x1024"
+    },{
+        "name": "iPad Retina", "size": "768x1024"
+    },{
+        "name": "iPad Pro", "size": "1366x1024"
+    },{
+        "name": "iPhone", "size": "320x480"
+    },{
+        "name": "iPhone 4", "size": "320x480"
+    },{
+        "name": "iMac 5K", "size": "2560x1440"
+    },{
+        "name": "MacBook 12", "size": "1280x800"
+    },{
+        "name": "MacBook Air 11", "size": "1366x768"
+    },{
+        "name": "MacBook Air 13", "size": "1440x900"
+    },{
+        "name": "MacBook Pro 13", "size": "1280x800"
+    },{
+        "name": "MacBook Pro 15", "size": "1440x900"
+    },{
+        "name": "iMac 27", "size": "2560x1440"
+    },{
+        "name": "Surface", "size": "1366x768"
+    },{
+        "name": "Surface 2", "size": "1280x720"
+    },{
+        "name": "Surface 3", "size": "1280x720"
+    },{
+        "name": "Surface Pro", "size": "1280x720"
+    },{
+        "name": "Surface Pro 3", "size": "1440x960"
+    },{
+        "name": "Surface Pro 4", "size": "1368x912"
+    },{
+        "name": "Surface Book", "size": "1500x1000"
     }
 ]

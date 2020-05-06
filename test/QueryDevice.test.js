@@ -26,10 +26,14 @@ describe("static method/attributes of `QueryDevice`" , () => {
                 expect( device.name.length ).to.be.greaterThan( 0 );
             }  );
 
-            it('should have `string size` with specific format property', () => {
+            const messageIt = `should have "string size" with specific format property: ${device.size}`;
+
+            it( messageIt , () => {
                 assert.isString(  device.size );
                 expect( device.size.length ).to.be.greaterThan( 0 );
-                assert.isTrue( /^[\d]{3,4}\x[\d]{3,4}$/.test(device.size) );
+                assert.isTrue(
+                    /^[\d]{3,4}\x[\d]{3,4}$/i.test(device.size)
+                );
             } );
 
         });
@@ -51,7 +55,7 @@ describe("static method/attributes of `QueryDevice`" , () => {
                 name: "iPhone XR",
                 isExists: true,
             }, {
-                name: "iPhone",
+                name: "ABC X",
                 isExists: false,
             }, {
                 name: "iPhone XS Max",
