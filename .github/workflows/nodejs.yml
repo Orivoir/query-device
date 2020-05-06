@@ -42,9 +42,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Push coverage -> codecov
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
+        uses: actions/setup-node@v1
+          with:
+          node-version: 12.x
     - run: npm ci
     - run: npm install
     - run: npm run report
