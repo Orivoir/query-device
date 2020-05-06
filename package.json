@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha ./test",
     "coverage": "nyc npm test",
+     "report": "nyc --reporter=lcov npm run coverage",
     "build": "node ./build/dist.js",
     "build-polyfill": "node ./build/babel-polyfill.js"
   },
