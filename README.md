@@ -1,6 +1,8 @@
 # [query-device]( https://npmjs.com/package/query-device )
 
-![Node.js CI](https://github.com/Orivoir/query-device/workflows/Node.js%20CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/Orivoir/query-device/branch/master/graph/badge.svg)](https://codecov.io/gh/Orivoir/query-device)
+
+[![Node.js CI](https://github.com/Orivoir/query-device/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/Orivoir/query-device/actions)
 
 > You have need dynamic responsive for your app, css cant full coverage, now you can use a handler of viewport device, easy usage.
 
