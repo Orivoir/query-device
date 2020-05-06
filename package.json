@@ -1,8 +1,8 @@
 {
   "name": "query-device",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Handler hight-level for mediaMatch API",
-  "main": "./dist/query-device.js",
+  "main": "./public/QueryDevice.js",
   "scripts": {
     "test": "mocha ./test",
     "coverage": "nyc npm test",
@@ -20,9 +20,9 @@
     "responsive",
     "media",
     "query",
+    "device",
     "matches",
     "queries",
-    "matche",
     "API",
     "JS",
     "front",

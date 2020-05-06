@@ -79,11 +79,11 @@ queryDevice.add( "min-width: 416px AND min-height: 640px", function( isMatches )
 
     if( isMatches ) {
 
-        console.log('viewport have not little width size');
+        console.log('viewport have not mobile size');
 
     } else {
 
-        console.log('viewport have little width size');
+        console.log('viewport have mobile size');
 
     }
 
@@ -214,6 +214,8 @@ queryDevice.remove( idQueryDevice );
 
 And now you **query device** for `"mobile-device"` is *detach* with success 👍.
 
+*With a device object as query device the default identifiant is the name of device*
+
 ## details of query device
 
 ### global event
@@ -243,7 +245,7 @@ queryDevice.add( "416x640", function( isMatches ) {
         console.log('view port enter mobile size');
     }
 
-}, idQueryDevice );
+} );
 ```
 
 If the **viewport** switch from: `1200x960` to: `580x700` your **callback** is not execute
