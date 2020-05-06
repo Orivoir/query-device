@@ -18,6 +18,7 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
+          - windows-latest
         node-version: [12.x, 13.x, 14.x]
 
     runs-on: ${{matrix.os}}
@@ -32,5 +33,19 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run coverage
+  coverag:
+
+    if: "!contains(github.event.head_commit.message, '[skip codecov]')"
+
+    runs-on: - ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Push coverage at codecov
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm install
+    - run: npm ci
     - run: npm run report
     - run: bash <(curl -s https://codecov.io/bash)
