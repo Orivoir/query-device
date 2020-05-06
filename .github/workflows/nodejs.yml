@@ -28,9 +28,24 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run coverage
+
+  codecov:
+    if: "!contains(github.event.head_commit.message, '[skip codecov]')"
+
+    need: build
+
+    run-os: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Push coverage -> codecov
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm ci
+    - run: npm install
     - run: npm run report
     - run: bash <(curl -s https://codecov.io/bash)
