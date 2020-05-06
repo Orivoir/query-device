@@ -29,15 +29,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run coverage
-  coverag:
 
+  codecov:
     if: "!contains(github.event.head_commit.message, '[skip codecov]')"
 
-    runs-on: - ubuntu-latest
+    needs: build
+
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -45,7 +46,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: npm install
     - run: npm ci
+    - run: npm install
     - run: npm run report
     - run: bash <(curl -s https://codecov.io/bash)
