@@ -1,0 +1,32 @@
+[
+    {
+        "input": " min-width: 350px AND min-height: 432px ",
+        "output": [
+            {
+                "matchMedia": "min-width: 350px",
+                "logicOperator": "&&",
+                "realLogicOperator": "AND",
+                "isLast": false
+            }, {
+                "matchMedia": "min-height: 432px",
+                "isLast": true
+            }
+        ]
+    }, {
+        "input": " min-width: 1200px",
+        "output": [
+            {
+                "matchMedia": "min-width: 1200px",
+                "isLast": true
+            }
+        ]
+    }, {
+        "input": " min-height: 640px  ",
+        "output": [
+            {
+                "matchMedia": "min-height: 640px",
+                "isLast": true
+            }
+        ]
+    }
+]

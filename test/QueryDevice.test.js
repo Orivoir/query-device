@@ -176,27 +176,47 @@ describe("static method/attributes of `QueryDevice`" , () => {
 
         } );
 
-        it.skip('`array parseMediaBrut( string mediaBrut )`' , () => {
+        describe('`array parseMediaBrut( string mediaBrut )`' , () => {
 
-            [
-                {
-                    input: " min-width: 350px AND min-height: 432px ",
-                    output: [
-                        {
-                            matchMedia: "min-width: 350px",
-                            logicOperator: "&&",
-                            realLogicOperator: "AND",
-                            isLast: false
-                        }, {
-                            matchMedia: "min-height: 432px",
-                            isLast: true
-                        }
-                    ]
+            const parseMediaBrutFactoryData = require('./factory-data/parseMediaBrut.json');
 
-                }
-            ].forEach( attempt => {
+            parseMediaBrutFactoryData.forEach( (attempt,index) => {
 
                 const outoutReceveid = QueryDevice.parseMediaBrut( attempt.input );
+                const outputAwait = parseMediaBrutFactoryData[index].output;
+
+                const messageIt = `output should be a array size: ${outputAwait.length} `
+
+                it( messageIt , () => {
+
+                    assert.isArray( outoutReceveid );
+                    expect( outoutReceveid ).to.have.lengthOf( outputAwait.length );
+
+                } );
+
+                describe("test exactly output for each:" , () => {
+
+                    outputAwait.forEach( (item,index) => {
+
+                        Object.keys( item ).forEach( itemAttribute => {
+
+                            const messageIt = `await a attribute: "${itemAttribute}" as: "${typeof item[ itemAttribute ]}" with exactly value: ${item[ itemAttribute ]}`
+
+                            it( messageIt , () => {
+
+                                assert.isTrue(
+                                    typeof item[ itemAttribute ] === typeof outoutReceveid[ index ][ itemAttribute ]
+                                );
+
+                                assert.isTrue( item[ itemAttribute ] === outoutReceveid[ index ][ itemAttribute ] ) ;
+
+                            } );
+
+                        } ) ;
+
+                    } );
+
+                } );
 
 
             } );

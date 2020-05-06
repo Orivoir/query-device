@@ -11,12 +11,17 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
 
     strategy:
       matrix:
-        node-version: [12.x, 13.x,14.x]
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+        node-version: [12.x, 13.x, 14.x]
+
+    runs-on: ${{matrix.os}}
 
     steps:
     - uses: actions/checkout@v2
