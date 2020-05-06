@@ -126,4 +126,83 @@ describe("static method/attributes of `QueryDevice`" , () => {
 
     } );
 
+    describe('the constant static element should be:' , () => {
+
+        it('`SECURITY_LOOP_PARSE_MEDIA` should be exactly equal to `48` as integer value', () => {
+
+            assert.isNumber( QueryDevice.SECURITY_LOOP_PARSE_MEDIA );
+            expect( QueryDevice.SECURITY_LOOP_PARSE_MEDIA ).to.be.equal( 48 );
+        } );
+
+        it( '`IS_OR` should be exactly equal `true` as bool value', () => {
+
+            assert.isBoolean( QueryDevice.IS_OR );
+            expect( QueryDevice.IS_OR ).to.be.equal( true );
+
+        } );
+
+        it( '`IS_AND` should be exactly equal `false` as bool value', () => {
+
+            assert.isBoolean( QueryDevice.IS_AND );
+            expect( QueryDevice.IS_AND ).to.be.equal( false );
+
+        } );
+
+        describe('`separators` shoul be `string[]` of:', () => {
+
+            it('should be a `array` of size `4`' , () => {
+
+                assert.isArray( QueryDevice.separators );
+
+                expect( QueryDevice.separators ).to.have.lengthOf( 4 );
+
+            } );
+
+            [
+                "||","&&","AND","OR"
+            ].forEach( (separatorAwait,index) => {
+
+                const separatorReceveid = QueryDevice.separators[index];
+
+                const messageIt = `await: "${separatorAwait}", receveid: "${separatorReceveid}"`;
+
+                it( messageIt, () => {
+
+                    expect( separatorAwait ).to.be.equal( separatorReceveid );
+
+                } );
+
+            } ) ;
+
+        } );
+
+        it.skip('`array parseMediaBrut( string mediaBrut )`' , () => {
+
+            [
+                {
+                    input: " min-width: 350px AND min-height: 432px ",
+                    output: [
+                        {
+                            matchMedia: "min-width: 350px",
+                            logicOperator: "&&",
+                            realLogicOperator: "AND",
+                            isLast: false
+                        }, {
+                            matchMedia: "min-height: 432px",
+                            isLast: true
+                        }
+                    ]
+
+                }
+            ].forEach( attempt => {
+
+                const outoutReceveid = QueryDevice.parseMediaBrut( attempt.input );
+
+
+            } );
+
+        } );
+
+    } );
+
 } ) ;

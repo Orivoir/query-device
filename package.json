@@ -1,6 +1,6 @@
 {
   "name": "query-device",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Handler hight-level for mediaMatch API",
   "main": "./dist/query-device.js",
   "scripts": {

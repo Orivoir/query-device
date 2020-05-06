@@ -55,7 +55,7 @@ let QueryDevice = /*#__PURE__*/function () {
       }
 
       return {
-        matchMedia: mediaBrut.substring(open, close).trim(),
+        matchMedia: mediaBrut.substring(0, close).trim(),
         logicOperator: logicOperator,
         realLogicOperator: realLogicOperator,
         isLast: false
