@@ -1,4 +1,4 @@
-# [0.5.0](https://github.com/Orivoir/query-device/releases/tag/0.5.0)
+# [0.5.0](https://github.com/Orivoir/query-device/releases/tag/0.5.0) - 05-07-2020
 
 - added unit test on *instance of*
 - added boundaries exception
