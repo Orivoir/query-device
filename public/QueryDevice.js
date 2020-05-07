@@ -1,9 +1,5 @@
 class QueryDevice {
 
-    static get SECURITY_LOOP_PARSE_MEDIA() {
-
-        return 48;
-    }
     static get deviceList() {
 
         return require('./../stockage/device-list.json') ;
@@ -25,9 +21,6 @@ class QueryDevice {
 
         let parsed = null;
 
-        // for not crash browser if infinity loop as: "never found last constraints media device"
-        let securityLoop = 0;
-
         do {
 
             parsed = QueryDevice.parseOneMedia( mediaBrut ) ;
@@ -37,11 +30,6 @@ class QueryDevice {
             mediaBrut = mediaBrut.replace( parsed.matchMedia, "" );
             mediaBrut = mediaBrut.replace( parsed.realLogicOperator, "" );
             mediaBrut = mediaBrut.trim();
-
-            if( ++securityLoop >= QueryDevice.SECURITY_LOOP_PARSE_MEDIA ) {
-                parsed = null;
-                throw "QueryDevice Loop parse media have fail as `never found last constraints media device`";
-            }
 
         } while( !parsed.isLast );
 
@@ -139,7 +127,10 @@ class QueryDevice {
 
     poolEvent() {
 
-        window[ (this.mediaEvents.length > 0 ? "add": "remove") + "EventListener"]('resize', this.onResizeWindow );
+        if( process.env.NODE_ENV !== "test" ) {
+
+            window[ (this.mediaEvents.length > 0 ? "add": "remove") + "EventListener"]('resize', this.onResizeWindow );
+        }
     }
 
     onResizeWindow() {
@@ -176,7 +167,12 @@ class QueryDevice {
     add( mediaBrut, callback, idQueryDevice = null ) {
 
         if( !(callback instanceof Function) ) {
-            throw "arg2:callback should be a function";
+            throw new RangeError("arg2: ( boolean: isMatches ) => void, should be a function");
+        }
+
+        if( typeof idQueryDevice !== "string" ) {
+
+            idQueryDevice = null;
         }
 
         const isStringMediaMatch = typeof mediaBrut === "string";
@@ -195,7 +191,7 @@ class QueryDevice {
             mediaBrut = QueryDevice.device2mediaBrut( { size: mediaBrut } );
         }
 
-        // if have give a device object as media to matches
+        // if have give a device object as query device
         if( typeof mediaBrut === "object" && typeof mediaBrut.name === "string" ) {
 
             mediaBrut = mediaBrut.name;
@@ -222,6 +218,7 @@ class QueryDevice {
         delete this.mediaParsed;
         delete this.mediaEval;
 
+        // re calcul if should attach a global event resize
         this.poolEvent();
     }
 
@@ -233,6 +230,7 @@ class QueryDevice {
             me.id !== idQueryDevice
         ) ) ;
 
+        // re calcul if should attach a global event resize
         this.poolEvent();
 
         return sizeBefore - this.mediaEvents.length;
