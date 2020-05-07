@@ -132,7 +132,7 @@ describe("static method/attributes of `QueryDevice`" , () => {
 
     describe('the constant static element should be:' , () => {
 
-        it('`SECURITY_LOOP_PARSE_MEDIA` should be exactly equal to `48` as integer value', () => {
+        it.skip('`SECURITY_LOOP_PARSE_MEDIA` should be exactly equal to `48` as integer value', () => {
 
             assert.isNumber( QueryDevice.SECURITY_LOOP_PARSE_MEDIA );
             expect( QueryDevice.SECURITY_LOOP_PARSE_MEDIA ).to.be.equal( 48 );
