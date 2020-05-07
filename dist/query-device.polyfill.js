@@ -135,7 +135,9 @@ let QueryDevice = /*#__PURE__*/function () {
   _createClass(QueryDevice, [{
     key: "poolEvent",
     value: function poolEvent() {
-      window[(this.mediaEvents.length > 0 ? "add" : "remove") + "EventListener"]('resize', this.onResizeWindow);
+      if (process.env.NODE_ENV !== "test") {
+        window[(this.mediaEvents.length > 0 ? "add" : "remove") + "EventListener"]('resize', this.onResizeWindow);
+      }
     }
   }, {
     key: "onResizeWindow",
@@ -166,7 +168,7 @@ let QueryDevice = /*#__PURE__*/function () {
     key: "add",
     value: function add(mediaBrut, callback, idQueryDevice = null) {
       if (!(callback instanceof Function)) {
-        throw "arg2:callback should be a function";
+        throw new RangeError("arg2: ( boolean: isMatches ) => void, should be a function");
       }
 
       const isStringMediaMatch = typeof mediaBrut === "string";
@@ -180,7 +182,7 @@ let QueryDevice = /*#__PURE__*/function () {
         mediaBrut = QueryDevice.device2mediaBrut({
           size: mediaBrut
         });
-      } // if have give a device object as media to matches
+      } // if have give a device object as query device
 
 
       if (typeof mediaBrut === "object" && typeof mediaBrut.name === "string") {
@@ -203,7 +205,8 @@ let QueryDevice = /*#__PURE__*/function () {
         id: typeof idQueryDevice === "string" ? idQueryDevice : null
       });
       delete this.mediaParsed;
-      delete this.mediaEval;
+      delete this.mediaEval; // re calcul if should attach a global event resize
+
       this.poolEvent();
     }
   }, {
@@ -212,7 +215,8 @@ let QueryDevice = /*#__PURE__*/function () {
       const sizeBefore = this.mediaEvents.length;
       this.mediaEvents = this.mediaEvents.filter(function (me) {
         return me.id !== idQueryDevice;
-      });
+      }); // re calcul if should attach a global event resize
+
       this.poolEvent();
       return sizeBefore - this.mediaEvents.length;
     }

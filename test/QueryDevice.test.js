@@ -132,7 +132,7 @@ describe("static method/attributes of `QueryDevice`" , () => {
 
     describe('the constant static element should be:' , () => {
 
-        it('`SECURITY_LOOP_PARSE_MEDIA` should be exactly equal to `48` as integer value', () => {
+        it.skip('`SECURITY_LOOP_PARSE_MEDIA` should be exactly equal to `48` as integer value', () => {
 
             assert.isNumber( QueryDevice.SECURITY_LOOP_PARSE_MEDIA );
             expect( QueryDevice.SECURITY_LOOP_PARSE_MEDIA ).to.be.equal( 48 );
@@ -230,3 +230,41 @@ describe("static method/attributes of `QueryDevice`" , () => {
     } );
 
 } ) ;
+
+describe("cycle life of instance of `QueryDevice`" , () => {
+
+    const qd = new QueryDevice;
+
+    it('`mediaEvents` should be a empty array' , () => {
+
+        assert.isArray( qd.mediaEvents );
+        expect( qd.mediaEvents ).to.be.lengthOf( 0 );
+    } );
+
+    it('attach/detach query devices' , () => {
+
+        const onMatches = function(isMatches) {} ;
+
+        qd.add('414x640' , onMatches, "mobile-device" );
+
+        qd.add('814x732' , onMatches, "tablet-device" );
+
+        expect( qd.size ).to.be.equal( 2 );
+
+        qd.remove( "tablet-device" );
+
+        expect( qd.size ).to.be.equal( 1 );
+
+        qd.remove( "mobile-device" );
+
+        expect( qd.size ).to.be.equal( 0 );
+
+    } ) ;
+
+    it('should throw \\RangeError during attach query device' , () => {
+
+        const fxThrow = () => qd.add( '350x520', null ) ;
+        expect( fxThrow ).to.be.throw( RangeError, "arg2: ( boolean: isMatches ) => void, should be a function");
+    } ) ;
+
+} );
